@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(#ffd6e8, #ffe6f2);
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    /* Balloons */
+    .balloon {
+        position: absolute;
+        width: 70px;
+        height: 90px;
+        background: #ff7eb9;
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+    }
+    .balloon:nth-child(2) { left: 15%; background: #ff65a3; animation-duration: 7s; }
+    .balloon:nth-child(3) { left: 50%; background: #ff95c3; animation-duration: 5.5s; }
+    .balloon:nth-child(4) { left: 80%; background: #ffb3d9; animation-duration: 6.5s; }
+
+    @keyframes float {
+        0% { bottom: -120px; transform: translateX(0); }
+        50% { bottom: 350px; transform: translateX(20px); }
+        100% { bottom: -120px; transform: translateX(0); }
+    }
+
+    /* Candles */
+    .cake {
+        margin-top: 60px;
+        transform: scale(1.2);
+    }
+
+    .candle {
+        width: 12px;
+        height: 45px;
+        background: #fff;
+        margin: 0 7px;
+        display: inline-block;
+        position: relative;
+        border-radius: 3px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    }
+
+    .flame {
+        width: 14px;
+        height: 14px;
+        background: gold;
+        border-radius: 50%;
+        position: absolute;
+        top: -18px;
+        left: -1px;
+        animation: flicker 0.25s infinite;
+    }
+
+    @keyframes flicker {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.25); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    button {
+        padding: 12px 24px;
+        margin-top: 35px;
+        font-size: 18px;
+        background: #ff3e9b;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #ff1d84;
+        transform: scale(1.05);
+    }
+
+    /* Birthday Message */
+    #message {
+        margin-top: 35px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #d6006b;
+        display: none;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+        .cake { transform: scale(1); }
+        button { font-size: 16px; }
+        #message { font-size: 20px; padding: 0 15px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Balloons -->
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+<!-- Candles -->
+<div class="cake">
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+</div>
+
+<button onclick="blowCandles()">Blow the Candles 🎂</button>
+
+<div id="message">💖Today is all about you the most beautiful, kind, and incredible person I’ve ever known. I feel so lucky to be a part of your life, to share your smile, your laughter, and all the little moments that make every day brighter.
+
+Thank you for being the person who fills my heart with warmth, comfort, and joy. You inspire me, you support me, and you make me want to be the best version of myself. I hope this year brings you all the happiness you give to everyone around you especially me.
+
+On your special day, I just want you to know how deeply I love you, how much you mean to me, and how excited I am for all the memories we still get to create together.
+
+Happy Birthday, my heart.
+I love you more than words can ever say. 💞 💖
+</div>
+
+<!-- Background Music -->
+<audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8e06e91397.mp3?filename=romantic-sentimental-piano-110397.mp3" loop></audio>
+
+<script>
+function blowCandles() {
+    // Remove flames
+    document.querySelectorAll(".flame").forEach(f => {
+        f.style.display = "none";
+    });
+
+    // Show message with animation
+    let msg = document.getElementById("message");
+    msg.style.display = "block";
+
+    // Play music (allowed after button click)
+    document.getElementById("bg-music").play();
+}
+</script>
+
+</body>
+</html>
